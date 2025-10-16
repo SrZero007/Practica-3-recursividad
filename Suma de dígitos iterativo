@@ -1,0 +1,39 @@
+# suma_digitos_iter.py
+import time
+
+def sum_digits_iter(n: int) -> int:
+    n = abs(n)
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+if _name_ == "_main_":
+    num = 1234567890123456789012345678901234567890
+    t0 = time.perf_counter()
+    result = sum_digits_iter(num)
+    t1 = time.perf_counter()
+    print("Sum digits (iterativo) =", result)
+    print(f"Tiempo: {t1-t0:.8f} s")
+
+Suma de dígitos recursivo
+
+# suma_digitos_rec.py
+import time
+import sys
+sys.setrecursionlimit(10000)
+
+def sum_digits_rec(n: int) -> int:
+    n = abs(n)
+    if n == 0:
+        return 0
+    return (n % 10) + sum_digits_rec(n // 10)
+
+if _name_ == "_main_":
+    num = 1234567890123456789012345678901234567890
+    t0 = time.perf_counter()
+    result = sum_digits_rec(num)
+    t1 = time.perf_counter()
+    print("Sum digits (recursivo) =", result)
+    print(f"Tiempo: {t1-t0:.8f} s")
